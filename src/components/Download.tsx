@@ -16,15 +16,17 @@ function Download(): JSX.Element {
     const loadFFmpeg = async () => {
         if (typeof window === 'undefined') return; // ✅ 서버에서 실행 방지
 
-        const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd';
+        // const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd';
         const FF = (await import('@ffmpeg/ffmpeg')).FFmpeg;
         const ffmpeg = new FF();
 
         ffmpeg.on('log', ({message}) => console.log(message));
 
         await ffmpeg.load({
-            coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
-            wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+            // coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
+            // wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+            coreURL: await toBlobURL(`/ffmpeg-core.js`, 'text/javascript'),
+            wasmURL: await toBlobURL(`/ffmpeg-core.wasm`, 'application/wasm'),
         });
 
         ffmpegRef.current = ffmpeg;
