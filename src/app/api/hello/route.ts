@@ -1,6 +1,6 @@
 import {NextRequest} from 'next/server';
 
-const ytdl = require("@distube/ytdl-core");
+import ytdl from "@distube/ytdl-core";
 
 export async function GET(req: NextRequest) {
     try {
@@ -17,6 +17,7 @@ export async function GET(req: NextRequest) {
 
 
         // 스트리밍 응답 설정
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return new Response(video as any, {
             headers: {
                 'Content-Disposition': `attachment; filename=${encodeURIComponent(title)}.webm"`,

@@ -62,7 +62,8 @@ function Download(): JSX.Element {
 
             // 5. 변환된 파일 읽기
             const data = await ffmpeg?.readFile('output.mp3');
-            const mp3Blob = new Blob([data?.buffer], {type: 'audio/mpeg'});
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const mp3Blob = new Blob([(data as any)?.buffer], {type: 'audio/mpeg'});
             const url = URL.createObjectURL(mp3Blob);
 
 
@@ -75,6 +76,7 @@ function Download(): JSX.Element {
             window.URL.revokeObjectURL(url);
 
             setIsDownloading(false);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
             alert(e);
             console.error(e);
