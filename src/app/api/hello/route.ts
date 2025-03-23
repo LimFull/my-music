@@ -26,7 +26,13 @@ export async function GET(req: NextRequest) {
             },
         });
     } catch (error) {
-        console.error('❌ 다운로드 오류:', error);
-        return new Response(JSON.stringify({error: '다운로드 중 오류 발생'}), {status: 500});
+        console.error('❌ API 에러:', error);
+        return new Response(JSON.stringify({
+            error: 'Internal Server Error',
+            detail: (error as Error).message, // 이거 추가!
+        }), {
+            status: 500,
+            headers: {'Content-Type': 'application/json'}
+        });
     }
 }
