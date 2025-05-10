@@ -6,13 +6,13 @@ import fs from 'fs/promises';
 
 const execAsync = promisify(exec);
 
-function sanitizeFilename(filename: string) {
-    // Windows, macOS, Linux에서 문제없는 파일명으로 필터링
-    return filename
-        .replace(/[<>:"/\\|?*\x00-\x1F]/g, '')
-        .replace(/[\u{0080}-\u{FFFF}]/gu, '') // 고확률 비ASCII 제거 (선택사항)
-        .trim();
-}
+// function sanitizeFilename(filename: string) {
+//     // Windows, macOS, Linux에서 문제없는 파일명으로 필터링
+//     return filename
+//         .replace(/[<>:"/\\|?*\x00-\x1F]/g, '')
+//         .replace(/[\u{0080}-\u{FFFF}]/gu, '') // 고확률 비ASCII 제거 (선택사항)
+//         .trim();
+// }
 
 export async function GET(req: NextRequest) {
     try {
