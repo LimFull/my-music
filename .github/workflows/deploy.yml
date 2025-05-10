@@ -22,6 +22,6 @@ jobs:
           script: |
             cd ${{ secrets.PI_PROJECT_PATH }}
             git pull origin main
-            yarn install --frozen-lockfile
-            yarn build
+            npm ci
+            npm run build
             pm2 restart ${{ secrets.PI_PM2_NAME }}
