@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
         // 1. 제목 가져오기
         const {stdout: rawTitle} = await execAsync(`yt-dlp --get-title "${url}"`);
         const title = rawTitle.trim();
-        const safeTitle = sanitizeFilename(title) || `yt-audio-${Date.now()}`;
+        // const safeTitle = sanitizeFilename(title) || `yt-audio-${Date.now()}`;
 
         // 2. ASCII-safe 임시 경로로 저장
         const outputPath = path.join(tempDir, `yt-audio-${Date.now()}.mp3`);
