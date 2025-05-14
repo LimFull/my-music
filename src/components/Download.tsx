@@ -104,7 +104,7 @@ function Download(): JSX.Element {
             {
                 isLoaded &&
                 <Container>
-                    <Input placeholder={'유튜브 주소 입력.'} onChange={handleChange}/>
+                    <Input placeholder={'유튜브 주소 입력'} onChange={handleChange}/>
                     {!isDownloading && <DownloadButton onClick={handleConvert}>다운로드</DownloadButton>}
                     {isDownloading && <Downloading>다운로드 중..</Downloading>}
                 </Container>
