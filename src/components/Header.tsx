@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 function Header() {
 
-    return <Container>v0.0.1</Container>
+    return <Container>v0.0.2</Container>
 }
 
 const Container = styled.header`

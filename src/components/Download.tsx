@@ -4,6 +4,7 @@ import {ChangeEvent, JSX, useEffect, useRef, useState} from "react";
 import {FFmpeg} from "@ffmpeg/ffmpeg";
 import {fetchFile, toBlobURL} from "@ffmpeg/util";
 import styled from "styled-components";
+import {MOBILE_MEDIA_QUERY} from "@/constants/size";
 
 
 function Download(): JSX.Element {
@@ -97,7 +98,7 @@ function Download(): JSX.Element {
     }, [])
 
     return (
-        <div>
+        <div className="w-full mobile:bg-amber-300">
             {
                 !isLoaded && <Loading>로딩 중..</Loading>
             }
@@ -122,7 +123,7 @@ const Input = styled.input`
     font-size: 16px;
     color: #25262C;
     background: #F7F7F8;
-    width: 500px;
+    width: 100%;
     padding: 0 16px;
     outline: none;
 `
@@ -135,6 +136,10 @@ const DownloadButton = styled.button`
     color: white;
     font-size: 16px;
     width: 200px;
+
+    ${MOBILE_MEDIA_QUERY} {
+        height: 48px;
+    }
 `
 
 const Container = styled.div`
@@ -143,6 +148,13 @@ const Container = styled.div`
     gap: 16px;
     align-items: center;
     justify-content: center;
+    width: 500px;
+
+    ${MOBILE_MEDIA_QUERY} {
+        width: 100%;
+    }
+
+
 `
 
 const Loading = styled.div``
