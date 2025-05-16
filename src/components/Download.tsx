@@ -149,6 +149,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     width: 500px;
+    margin: 0 auto;
 
     ${MOBILE_MEDIA_QUERY} {
         width: 100%;
